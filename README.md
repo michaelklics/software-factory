@@ -1,6 +1,6 @@
 # Software Factory
 
-Software Factory is a Codex-based system for turning a declared product vision and a selected roadmap milestone into a runnable candidate with evidence. It builds toward each product's declared goals while leaving decisions about those goals with the product's governing party. Within the authorized build scope, the factory chooses implementation details and reports unresolved decisions.
+Software Factory is a Codex-based system for turning a declared product vision and a selected roadmap milestone into a runnable candidate with evidence. It builds toward each product's declared goals while leaving decisions about those goals with the product's governing party. Within the authorized build scope, the factory chooses implementation details.
 
 The [factory product specification](product.json) describes the intended factory. The [build contract](build-contract.json) defines the exchange with a product repository, and its [request schema](build-request.schema.json) validates the shape of a request. A product repository supplies its own specification, roadmap, acceptance scenarios and a small build request. Music Composer is the first consumer.
 

@@ -15,7 +15,7 @@
   "run": {
     "revision": "Record immutable commits for the product, ontology and factory contract before execution.",
     "scope": "Work toward the selected milestone and relevant regressions; assess progress toward the full target specification separately.",
-    "conflict": "Return affected declarations to the product governor with a proposed resolution.",
+    "conflict": "When a conflict or gap requires a product decision about requirements or scope, return the affected declarations and a proposed resolution to the product governor. Continue work that does not depend on that decision.",
     "accounting": "Record forecast or estimation gap before the run; link actual resource observations and reconciliation gaps to the run afterward."
   },
   "result": {
