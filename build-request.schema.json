@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Software Factory build request",
+  "type": "object",
+  "properties": {
+    "version": {"const": "0.1.0"},
+    "factory_interface": {"const": "software-factory/build-contract@0.1.0"},
+    "product": {"type": "string", "minLength": 1},
+    "roadmap": {"type": "string", "minLength": 1},
+    "acceptance": {"type": "string", "minLength": 1},
+    "selected_milestone": {"type": "string", "minLength": 1},
+    "activation": {"type": "string", "minLength": 1},
+    "product_authority": {"type": "string", "minLength": 1}
+  },
+  "required": ["version", "factory_interface", "product", "roadmap", "acceptance", "selected_milestone", "activation", "product_authority"],
+  "additionalProperties": false
+}

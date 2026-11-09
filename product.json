@@ -1,0 +1,96 @@
+{
+  "ontology_version": "0.3.0",
+  "kind": "product",
+  "module": "software_factory",
+  "version": "0.1.0",
+  "governed_by": "factory_governor",
+  "actors": {
+    "factory_governor": {
+      "meaning": "The party accountable for the factory's capabilities, resource use and operating policies. Initially the maintainer."
+    },
+    "product_governor": {
+      "meaning": "The governing party of a product submitted to the factory; retains authority over that product's requirements and trade-offs."
+    },
+    "builder": {
+      "meaning": "The Codex agent carrying out an authorized build run."
+    }
+  },
+  "entities": {
+    "build_request": {
+      "meaning": "A selected product revision, roadmap milestone and acceptance set offered to the factory under an explicit interface version.",
+      "identity": "One request tied to immutable source revisions and one selected milestone."
+    },
+    "build_run": {
+      "meaning": "One execution of a build request with its decisions, resource observations and evidence.",
+      "identity": "A run identifier that links its input revision, observations and result."
+    },
+    "candidate": {
+      "meaning": "A runnable product revision produced by a build run.",
+      "identity": "A source revision and any build artifact associated with it."
+    }
+  },
+  "relations": {
+    "run_for_request": {
+      "source": "build_run",
+      "target": "build_request",
+      "meaning": "Identifies the exact product and milestone pursued by the run."
+    },
+    "candidate_from_run": {
+      "source": "candidate",
+      "target": "build_run",
+      "meaning": "Preserves the provenance of a produced candidate."
+    }
+  },
+  "actions": {
+    "build_milestone": {
+      "actor": "builder",
+      "subject": "build_request",
+      "intent": "Produce and assess a runnable candidate for the selected milestone, within the product governor's delegated scope.",
+      "outcomes": [
+        "candidate_with_evidence",
+        "blocked_with_evidence"
+      ]
+    }
+  },
+  "requirements": {
+    "product_authority": {
+      "owner": "product_governor",
+      "perspective": "organizational",
+      "intent": "Keep product decisions with the product's governing party while allowing the factory to choose implementation details.",
+      "check": {
+        "authority": "product_governor",
+        "claim": "The run identifies its authorized source revisions and milestone. Changes to product requirements or scope are referred to the product governor rather than silently adopted.",
+        "scope": "Each build run and its resulting candidate."
+      }
+    },
+    "build_evidence": {
+      "owner": "factory_governor",
+      "perspective": "organizational",
+      "intent": "Make the outcome of a build run reproducible and assessable against the selected milestone.",
+      "check": {
+        "authority": "factory_governor",
+        "claim": "The run returns a runnable candidate or a named blocker, replay steps, per-scenario pass, fail, partial or unverified results, and the exact revisions used.",
+        "scope": "Each completed or blocked build run."
+      }
+    },
+    "factory_resource_evidence": {
+      "owner": "factory_governor",
+      "perspective": "organizational",
+      "intent": "Account for resources spent defining, building and verifying products without mixing them with the products' operating costs.",
+      "check": {
+        "authority": "factory_governor",
+        "claim": "Each factory activity records attributable usage, known charges and source evidence, or names the measurement gap. Forecasts, allowances and invoiced charges remain distinguishable. Failed billable attempts and retries are included.",
+        "scope": "Factory planning, build and verification activities by product and accounting period."
+      }
+    }
+  },
+  "metrics": {
+    "build_run_cost": {
+      "meaning": "Confirmed monetary charge attributable to a factory build run, with estimates and unknown amounts reported separately.",
+      "unit": "currency of charge",
+      "population": "All billable model, tool, infrastructure and verification use attributable to one run, including retries.",
+      "window": "One build run, reconciled when billing evidence becomes available.",
+      "evidence": "Usage records and provider billing records linked by run identifier."
+    }
+  }
+}

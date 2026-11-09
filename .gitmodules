@@ -1,0 +1,3 @@
+[submodule "dependencies/product-ontology"]
+	path = dependencies/product-ontology
+	url = ../product-ontology

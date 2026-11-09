@@ -1,0 +1,27 @@
+{
+  "name": "software-factory/build-contract",
+  "version": "0.1.0",
+  "request_schema": "build-request.schema.json",
+  "inputs": {
+    "product": "The evolving target product specification at a recorded source revision.",
+    "roadmap": "The milestone sequence and the selected milestone at the same source revision.",
+    "acceptance": "Concrete scenarios linked by the selected milestone.",
+    "ontology": "The product ontology commit pinned by the requesting product repository."
+  },
+  "authority": {
+    "product_governor": "Adopts or revises product requirements and resolves conflicts.",
+    "factory": "Chooses architecture, libraries, task breakdown and verification methods within the selected milestone."
+  },
+  "run": {
+    "revision": "Record immutable commits for the product, ontology and factory contract before execution.",
+    "scope": "Work toward the selected milestone and relevant regressions; assess progress toward the full target specification separately.",
+    "conflict": "Return affected declarations to the product governor with a proposed resolution.",
+    "accounting": "Record forecast or estimation gap before the run; link actual resource observations and reconciliation gaps to the run afterward."
+  },
+  "result": {
+    "candidate": "Runnable revision and replay instructions, or a named blocker.",
+    "scenario_statuses": ["pass", "fail", "partial", "unverified"],
+    "evidence": "Expected and observed results for each linked scenario, including any device trial that cannot run in the factory environment.",
+    "remaining_work": "Unresolved assumptions, failing scenarios and distance from the full product target."
+  }
+}

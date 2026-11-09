@@ -1,0 +1,8 @@
+{
+  "scope": "Software Factory design, build and verification resource use; excludes deployed product operation.",
+  "budgets": {
+    "design": {"limit": null, "status": "unset"},
+    "build": {"limit": null, "status": "unset"}
+  },
+  "records": []
+}
